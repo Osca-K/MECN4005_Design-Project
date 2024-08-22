@@ -6,17 +6,17 @@ clc
 
 % System Parameters
 m = 1200; % Mass (kg)
-A = 0.03; % Amplitude of the input sinusoid (m)
-omega = 1; % Frequency of input sinusoid (rad/s)
+A = 0.03; % Amplitude as estimated using the rack rail height
+omega = 1; % Arbitary chosen valuue for simplifying analysis (rad/s)
 
 % Define ranges for k and c
-k_values = [500, 1000, 1500]; % Spring constants (N/m)
-c_values = [50, 100, 150]; % Damping coefficients (Ns/m)
+k_values = [1000, 1500]; % Spring constants (N/m)
+c_values = [ 100, 150]; % Damping coefficients (Ns/m)
 
 % Time vector
-t = linspace(0, 10, 1000); % Time from 0 to 10 seconds
+t = linspace(0, 10, 1000); % Time from 0 to 60 seconds (Desired to settle within a minutes if possibel
 
-% Create figure
+
 figure;
 hold on;
 
@@ -29,9 +29,9 @@ for k = k_values
         omega_d = omega_n * sqrt(1 - zeta^2);
 
         % System response calculation
-        % Input: A*sin(omega*t)
+        % Input: A*sin(omega*t) >>Because it is simillar to sinwave which is being used to model the vibration on the wheel so its still acceptable to do so
         % Response: use the impulse response for simplicity
-        % For actual systems, you might use a more complex solution
+       
         
         % Impulse Response (for illustration)
         sys = tf([1], [m, c, k]); % Transfer function H(s) = 1 / (ms^2 + cs + k)
@@ -42,8 +42,8 @@ for k = k_values
     end
 end
 
-% Customize the plot
-title('System Response for Different k and c Values');
+
+
 xlabel('Time (s)');
 ylabel('Response');
 legend('show');
