@@ -14,7 +14,7 @@ k_values = [1000, 1500]; % Spring constants (N/m)
 c_values = [ 100, 150]; % Damping coefficients (Ns/m)
 
 % Time vector
-t = linspace(0, 10, 1000); % Time from 0 to 60 seconds (Desired to settle within a minutes if possibel
+t = linspace(0, 60, 1000); % Time from 0 to 60 seconds (Desired to settle within a minutes if possibel
 
 
 figure;
